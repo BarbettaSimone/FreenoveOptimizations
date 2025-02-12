@@ -7,16 +7,26 @@
 ########################################################################
 from gpiozero import LED, Button
 import time
+from threading import Lock
 
 led = LED(17) # define LED pin according to BCM Numbering
 button = Button(18) # define Button pin according to BCM Numbering
+currentTime = time.time()
 
 def onButtonPressed():  # When button is pressed, this function will be executed
-    led.toggle()
-    if led.is_lit :
-        print("Led turned on >>>")
-    else :
-        print("Led turned off <<<")    
+    global currentTime
+    """
+    To avoid double onButtonPressed()
+    caused by the button
+    """
+    if (time.time() - currentTime > 0.1):
+        led.toggle()
+        if led.is_lit :
+            print("Led turned on >>>")
+        else :
+            print("Led turned off <<<")
+        currentTime = time.time()
+        
 def loop():
     #Button detect
     button.when_pressed = onButtonPressed
