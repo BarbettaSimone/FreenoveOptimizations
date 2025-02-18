@@ -7,7 +7,6 @@
 ########################################################################
 from gpiozero import LED, Button
 import time
-from threading import Lock
 
 led = LED(17) # define LED pin according to BCM Numbering
 button = Button(18) # define Button pin according to BCM Numbering
