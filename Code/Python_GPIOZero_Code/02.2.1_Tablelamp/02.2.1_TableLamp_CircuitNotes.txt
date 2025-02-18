@@ -1,0 +1,1 @@
+-You can optimize the current flow by connecting the circled pin in the 02.2.1_Tablelamp_CircuitImage.jpg directly to the GND (near GPIO26)
