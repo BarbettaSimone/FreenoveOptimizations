@@ -19,7 +19,7 @@ def onButtonPressed():  # When button is pressed, this function will be executed
     To avoid double onButtonPressed()
     caused by the button
     """
-    if (time.time() - currentTime > 0.5):
+    if (time.time() - currentTime > 0.2):
         led.toggle()
         if led.is_lit :
             print("Led turned on >>>")
